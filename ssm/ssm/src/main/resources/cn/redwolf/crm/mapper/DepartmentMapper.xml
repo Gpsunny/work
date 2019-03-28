@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.redwolf.crm.mapper.DepartmentMapper" >
+  <resultMap id="BaseResultMap" type="cn.redwolf.crm.domain.Department" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="sn" property="sn" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="dirPath" property="dirpath" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="manager_id" property="managerId" jdbcType="BIGINT" />
+    <result column="parent_id" property="parentId" jdbcType="BIGINT" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_department
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.redwolf.crm.domain.Department" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_department (id, sn, name, 
+      dirPath, state, manager_id, 
+      parent_id)
+    values (#{id,jdbcType=BIGINT}, #{sn,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{dirpath,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{managerId,jdbcType=BIGINT}, 
+      #{parentId,jdbcType=BIGINT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.redwolf.crm.domain.Department" >
+    update t_department
+    set sn = #{sn,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      dirPath = #{dirpath,jdbcType=VARCHAR},
+      state = #{state,jdbcType=INTEGER},
+      manager_id = #{managerId,jdbcType=BIGINT},
+      parent_id = #{parentId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, sn, name, dirPath, state, manager_id, parent_id
+    from t_department
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, sn, name, dirPath, state, manager_id, parent_id
+    from t_department
+  </select>
+
+<!-- List<T> selectPage(BaseQuery baseQuery);-->
+  <select id="selectPage" resultMap="BaseResultMap" parameterType="DepartmentQuery" >
+    select id, sn, name, dirPath, state, manager_id, parent_id
+    from t_department
+  </select>
+</mapper>

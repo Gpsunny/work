@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--namespace
+要唯一,需要关联mapper接口-->
+<mapper namespace="cn.itsource.spring.mapper.UserMapper">
+    <!--User getById(Long id);-->
+    <select id="getById" parameterType="long" resultType="User">
+      select * from t_user where id=#{id}
+    </select>
+
+    <!--List<User> loadByQuery(UserQuery userQuery);-->
+    <select id="loadByQuery" parameterType="UserQuery" resultType="User">
+        select * from t_user
+    </select>
+
+    <!--void save(User user);-->
+    <insert id="save" parameterType="user">
+        INSERT into t_user (name) VALUES (#{name})
+    </insert>
+    <!-- User getUserByUsername(String name);-->
+    <select id="getUserByUsername" resultType="cn.itsource.spring.domain.User" parameterType="string">
+        SELECT * FROM t_user WHERE name=#{name};
+    </select>
+</mapper>
+
+
+

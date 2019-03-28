@@ -1,0 +1,70 @@
+10
+
+dir
+0
+https://lihui-pc/svn/ssm/trunk/src/main/java/cn/redwolf/crm
+https://lihui-pc/svn/ssm
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0279bf15-b804-6345-882c-f305cef8577c
+
+service
+dir
+
+
+
+add
+
+mapper
+dir
+
+
+
+add
+
+query
+dir
+
+
+
+add
+
+domain
+dir
+
+
+
+add
+
+util
+dir
+
+
+
+add
+
+web
+dir
+
+
+
+add
+
